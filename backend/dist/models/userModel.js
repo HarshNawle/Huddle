@@ -18,13 +18,13 @@ const userModel = new mongoose.Schema({
     },
     profile: {
         type: String,
-        default: ""
+        default: "default.png"
     },
     gender: {
         type: String,
         enum: ["male", "female"],
         required: true
     }
-});
+}, { timestamps: true });
 export const User = mongoose.model("User", userModel);
 //# sourceMappingURL=userModel.js.map

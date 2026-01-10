@@ -1,30 +1,19 @@
 import mongoose from "mongoose";
-export declare class UserModel {
-}
-export declare const User: mongoose.Model<{
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+export declare const Conversation: mongoose.Model<{
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps, {}, {}, {
     id: string;
 }, mongoose.Document<unknown, {}, {
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, {
     timestamps: true;
 }> & Omit<{
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -34,27 +23,18 @@ export declare const User: mongoose.Model<{
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, {
     timestamps: true;
 }, {
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps, mongoose.Document<unknown, {}, {
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & Omit<{
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -65,21 +45,15 @@ export declare const User: mongoose.Model<{
     [path: string]: mongoose.SchemaDefinitionProperty<undefined, any, any>;
 } | {
     [x: string]: mongoose.SchemaDefinitionProperty<any, any, mongoose.Document<unknown, {}, {
-        fullName: string;
-        userName: string;
-        password: string;
-        profile: string;
-        gender: "male" | "female";
+        participants: mongoose.Types.ObjectId[];
+        messages: mongoose.Types.ObjectId[];
     } & mongoose.DefaultTimestampProps, {
         id: string;
     }, mongoose.ResolveSchemaOptions<{
         timestamps: true;
     }>> & Omit<{
-        fullName: string;
-        userName: string;
-        password: string;
-        profile: string;
-        gender: "male" | "female";
+        participants: mongoose.Types.ObjectId[];
+        messages: mongoose.Types.ObjectId[];
     } & mongoose.DefaultTimestampProps & {
         _id: mongoose.Types.ObjectId;
     } & {
@@ -88,11 +62,8 @@ export declare const User: mongoose.Model<{
         id: string;
     }> | undefined;
 }, {
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
@@ -100,11 +71,8 @@ export declare const User: mongoose.Model<{
 } & {
     __v: number;
 }>, {
-    fullName: string;
-    userName: string;
-    password: string;
-    profile: string;
-    gender: "male" | "female";
+    participants: mongoose.Types.ObjectId[];
+    messages: mongoose.Types.ObjectId[];
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
@@ -112,4 +80,4 @@ export declare const User: mongoose.Model<{
 } & {
     __v: number;
 }>;
-//# sourceMappingURL=userModel.d.ts.map
+//# sourceMappingURL=conversationModel.d.ts.map
