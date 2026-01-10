@@ -51,7 +51,7 @@ export const loginUser: RequestHandler = async (req, res) => {
             return res.status(400).json({ message: "Invalid password", success: false });
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "1d" });
+        const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET as string, { expiresIn: "1d" });
         // Store jwt token in cookie
         res.cookie("token", token, { 
             httpOnly: true, 
@@ -73,6 +73,17 @@ export const logoutUser: RequestHandler = async (req, res) => {
         return res.status(200).json({ message: "Logout successful", success: true });
     } catch (error: any) {
         console.log("Error in logoutUser", error);
+        return res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
+export const getOtherUsers: RequestHandler = async (req,res) => {
+    try {
+        const loggedInUserID = req.id;
+        const otherUsers = await User.find({ _id: {$ne:loggedInUserID} }).select("-password");
+        return res.status(200).json(otherUsers);
+    } catch (error: any) {
+        console.log("Error in getOtherUser", error);
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }

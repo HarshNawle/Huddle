@@ -1,8 +1,10 @@
 import express from "express";
-import { loginUser, logoutUser, registerUser } from "../controller/userController.js";
+import { getOtherUsers, loginUser, logoutUser, registerUser } from "../controller/userController.js";
+import isAuthenticated from "../middleware/isAuthenticated.js";
 const router = express.Router();
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.post("/logout", logoutUser);
+router.delete("/logout", logoutUser);
+router.get("/", isAuthenticated, getOtherUsers);
 export default router;
 //# sourceMappingURL=userRoutes.js.map
