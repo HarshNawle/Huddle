@@ -15,10 +15,6 @@ const messageModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    timestamp: {
-        type: Date,
-        default: Date.now
-    }
 }, { timestamps: true });
 export const Message = mongoose.model("Message", messageModel);
 //# sourceMappingURL=messageModel.js.map

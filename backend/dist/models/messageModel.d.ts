@@ -1,25 +1,22 @@
 import mongoose from "mongoose";
 export declare const Message: mongoose.Model<{
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps, {}, {}, {
     id: string;
 }, mongoose.Document<unknown, {}, {
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, {
     timestamps: true;
 }> & Omit<{
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -29,24 +26,21 @@ export declare const Message: mongoose.Model<{
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, {
     timestamps: true;
 }, {
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps, mongoose.Document<unknown, {}, {
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & Omit<{
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -57,19 +51,17 @@ export declare const Message: mongoose.Model<{
     [path: string]: mongoose.SchemaDefinitionProperty<undefined, any, any>;
 } | {
     [x: string]: mongoose.SchemaDefinitionProperty<any, any, mongoose.Document<unknown, {}, {
-        message: string;
         senderID: mongoose.Types.ObjectId;
         receiverID: mongoose.Types.ObjectId;
-        timestamp: NativeDate;
+        message: string;
     } & mongoose.DefaultTimestampProps, {
         id: string;
     }, mongoose.ResolveSchemaOptions<{
         timestamps: true;
     }>> & Omit<{
-        message: string;
         senderID: mongoose.Types.ObjectId;
         receiverID: mongoose.Types.ObjectId;
-        timestamp: NativeDate;
+        message: string;
     } & mongoose.DefaultTimestampProps & {
         _id: mongoose.Types.ObjectId;
     } & {
@@ -78,10 +70,9 @@ export declare const Message: mongoose.Model<{
         id: string;
     }> | undefined;
 }, {
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
@@ -89,10 +80,9 @@ export declare const Message: mongoose.Model<{
 } & {
     __v: number;
 }>, {
-    message: string;
     senderID: mongoose.Types.ObjectId;
     receiverID: mongoose.Types.ObjectId;
-    timestamp: NativeDate;
+    message: string;
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {

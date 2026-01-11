@@ -6,7 +6,6 @@ const isAuthenticated = async (req, res, next) => {
             return res.status(401).json({ message: "User isUnauthorized", success: false });
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded);
         if (!decoded || typeof decoded === 'string') {
             return res.status(401).json({ message: "Invalid token", success: false });
         }
