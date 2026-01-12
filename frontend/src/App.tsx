@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom"
-import LandingPage from "./components/pages/LandingPage"
 import LoginPage from "./components/pages/LoginPage"
 import RegisterPage from "./components/pages/RegisterPage"
-import Navbar from "./components/Navbar"
+import NavbarDemo from "./components/Navbar"
+import InteractiveGridPatternDemo from "./components/GridPattern"
 
 function App() {
   return (
     <div>
-      <Navbar/>
+      <NavbarDemo/>
+      <InteractiveGridPatternDemo/>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route path="/singup" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
