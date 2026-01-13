@@ -1,80 +1,25 @@
-import {
-    Navbar,
-    NavBody,
-    NavItems,
-    MobileNav,
-    NavbarLogo,
-    NavbarButton,
-    MobileNavHeader,
-    MobileNavToggle,
-    MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
-import { useState } from "react";
-import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
-import { Link } from "react-router-dom";
-
-const NavbarDemo = () => {
+import { RabbitIcon } from "lucide-react"
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler"
+import { Link } from "react-router-dom"
 
 
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+const Navbar = () => {
     return (
-        <div className=" w-full my-[-20px]">
-            <Navbar>
-                {/* Desktop Navigation */}
-                <NavBody>
-                    <NavbarLogo />
-                    <NavItems items={[]} />
-                    <div className="flex items-center gap-4">
-                        <NavbarButton variant="secondary">Login</NavbarButton>
-                        <NavbarButton variant="primary">Sign up</NavbarButton>
-                        <NavbarButton variant="secondary">
-                            <AnimatedThemeToggler/>
-                        </NavbarButton>
-                    </div>
-                </NavBody>
-
-                {/* Mobile Navigation */}
-                <MobileNav>
-                    <MobileNavHeader>
-                        <NavbarLogo />
-                        <MobileNavToggle
-                            isOpen={isMobileMenuOpen}
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        />
-                    </MobileNavHeader>
-
-                    <MobileNavMenu
-                        isOpen={isMobileMenuOpen}
-                        onClose={() => setIsMobileMenuOpen(false)}
-                    >
-
-                        <div className="flex w-full flex-col gap-4">
-                            <NavbarButton
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                variant="primary"
-                                className="w-full"
-                                href="/login"
-                            >
-                                Login
-                            </NavbarButton>
-                            <NavbarButton
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                variant="primary"
-                                className="w-full"
-                                href="/signup"
-                            >
-                                Sign up
-                            </NavbarButton>
-                        </div>
-                    </MobileNavMenu>
-                </MobileNav>
-            </Navbar>
-
-            {/* Navbar */}
-        </div>
-    );
+        <nav className="flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-3 
+        sm:py-4 dark:shadow-gray-900 dark:shadow-lg shadow-gray-200 shadow-lg ">
+            <Link to="/">
+                <div className="flex items-center gap-2 sm:gap-3">
+                    <RabbitIcon className="size-7 cursor-pointer sm:size-8 md:size-9 dark:text-blue-800 text-gray-800 border
+                 border-gray-400 dark:border-blue-800 dark:bg-black bg-white rounded-full p-1"/>
+                    <button className="text-xl cursor-pointer sm:text-2xl font-bold text-gray-700 dark:text-white">Huddle</button>
+                </div>
+            </Link>
+            <div className="flex items-center gap-2 sm:gap-4 rounded-full border-2 border-gray-400 p-1 dark:border-blue-500">
+                {/* Add nav items here if needed */}
+                <AnimatedThemeToggler />
+            </div>
+        </nav>
+    )
 }
 
-export default NavbarDemo
-
+export default Navbar

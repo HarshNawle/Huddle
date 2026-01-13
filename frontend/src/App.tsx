@@ -1,18 +1,22 @@
 import { Route, Routes } from "react-router-dom"
+import SignupPage from "./components/pages/SignupPage"
+import Navbar from "./components/Navbar"
 import LoginPage from "./components/pages/LoginPage"
-import RegisterPage from "./components/pages/RegisterPage"
-import NavbarDemo from "./components/Navbar"
-import InteractiveGridPatternDemo from "./components/GridPattern"
+import FooterSection from "./components/FooterSection"
 
-function App() {
+
+
+const App = () => {
   return (
-    <div>
-      <NavbarDemo/>
-      <InteractiveGridPatternDemo/>
-      <Routes>
-        <Route path="/singup" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </main>
+      <FooterSection />
     </div>
   )
 }
