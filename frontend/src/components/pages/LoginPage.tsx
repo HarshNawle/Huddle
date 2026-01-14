@@ -5,8 +5,23 @@ import { Input } from "../ui/input"
 import TalkingPeople from "../../assets/5914759-removebg-preview.png"
 import { InteractiveHoverButton } from "../ui/interactive-hover-button"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 const LoginPage = () => {
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+      });
+    
+      const onSubmitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log(user);
+        setUser({
+          email: "",
+          password: "",
+        });
+      }
+
     return (
         <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 p-4 sm:p-6 md:p-8 lg:p-10 flex-1 overflow-hidden">
             {/* Signup Layout  */}
@@ -19,9 +34,9 @@ const LoginPage = () => {
              border-gray-400 dark:border-blue-800 dark:bg-black bg-white rounded-full p-1" /> Huddle
                     </span>
                     <div className="text-sm sm:text-[15px] md:text-base dark:text-gray-400 text-gray-800">
-                        <p className="flex items-center justify-center gap-2 flex-wrap">
+                        <div className="flex items-center justify-center gap-2 flex-wrap">
                             Your conversations continue <TextFlip words={["right away", "in real time", "effortlessly"]} /> on Huddle.
-                        </p>
+                        </div>
                     </div>
                 </div>
 
@@ -31,22 +46,28 @@ const LoginPage = () => {
                         <FieldGroup>
                             <Field>
                                 <FieldLabel htmlFor="email">Email</FieldLabel>
-                                <Input id="email" type="email" placeholder="maxleiter@gmail.com" />
+                                <Input id="email" type="email" placeholder="maxleiter@gmail.com"
+                                value={user.email} 
+                                onChange={(e) => setUser({ ...user, email: e.target.value })}/>
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="password">Password</FieldLabel>
-                                <Input id="password" type="password" placeholder="••••••••" />
+                                <Input id="password" type="password" placeholder="••••••••"
+                                value={user.password}
+                                onChange={(e) => setUser({ ...user, password: e.target.value })} />
                             </Field>
                         </FieldGroup>
                     </FieldSet>
 
                 </div>
                 <div>
-                        Don't have an account? <Link to="/signup" className="text-blue-600 dark:text-blue-400" >Sign up</Link>
+                    Don't have an account? <Link to="/signup" className="text-blue-600 dark:text-blue-400" >Sign up</Link>
                 </div>
 
                 <div className="w-full max-w-[400px] px-4 sm:px-6 md:px-0">
-                    <InteractiveHoverButton className="w-full">Login</InteractiveHoverButton>
+                    <InteractiveHoverButton className="w-full" onClick={onSubmitHandler}>
+                        Login
+                    </InteractiveHoverButton>
                 </div>
 
             </div>

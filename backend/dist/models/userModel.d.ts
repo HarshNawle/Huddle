@@ -3,28 +3,28 @@ export declare class UserModel {
 }
 export declare const User: mongoose.Model<{
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps, {}, {}, {
     id: string;
 }, mongoose.Document<unknown, {}, {
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, {
     timestamps: true;
 }> & Omit<{
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -35,26 +35,26 @@ export declare const User: mongoose.Model<{
     timestamps: true;
 }, {
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps, mongoose.Document<unknown, {}, {
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps, {
     id: string;
 }, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & Omit<{
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -66,20 +66,20 @@ export declare const User: mongoose.Model<{
 } | {
     [x: string]: mongoose.SchemaDefinitionProperty<any, any, mongoose.Document<unknown, {}, {
         fullName: string;
-        userName: string;
+        email: string;
         password: string;
         profile: string;
-        gender: "male" | "female";
+        gender: "Male" | "Female" | "male" | "female";
     } & mongoose.DefaultTimestampProps, {
         id: string;
     }, mongoose.ResolveSchemaOptions<{
         timestamps: true;
     }>> & Omit<{
         fullName: string;
-        userName: string;
+        email: string;
         password: string;
         profile: string;
-        gender: "male" | "female";
+        gender: "Male" | "Female" | "male" | "female";
     } & mongoose.DefaultTimestampProps & {
         _id: mongoose.Types.ObjectId;
     } & {
@@ -89,10 +89,10 @@ export declare const User: mongoose.Model<{
     }> | undefined;
 }, {
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
@@ -101,10 +101,10 @@ export declare const User: mongoose.Model<{
     __v: number;
 }>, {
     fullName: string;
-    userName: string;
+    email: string;
     password: string;
     profile: string;
-    gender: "male" | "female";
+    gender: "Male" | "Female" | "male" | "female";
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {

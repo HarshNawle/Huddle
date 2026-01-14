@@ -7,7 +7,7 @@ const userModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    userName: {
+    email: {
         type: String,
         required: true,
         unique: true
@@ -22,7 +22,7 @@ const userModel = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ["male", "female"],
+        enum: ["Male", "Female", "male", "female"],
         required: true
     }
 }, { timestamps: true });

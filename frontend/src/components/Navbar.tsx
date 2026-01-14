@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
-        <nav className="flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-3 
+        <nav className="dark:bg-[#0A0A0A] sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-3 
         sm:py-4 dark:shadow-gray-900 dark:shadow-lg shadow-gray-200 shadow-lg ">
             <Link to="/">
                 <div className="flex items-center gap-2 sm:gap-3">
@@ -16,7 +16,7 @@ const Navbar = () => {
             </Link>
             <div className="flex items-center gap-2 sm:gap-4 rounded-full border-2 border-gray-400 p-1 dark:border-blue-500">
                 {/* Add nav items here if needed */}
-                <AnimatedThemeToggler />
+                <AnimatedThemeToggler className="cursor-pointer" />
             </div>
         </nav>
     )

@@ -1,16 +1,16 @@
 import mongoose, { Mongoose } from "mongoose";
 import { profile } from "node:console";
 
-export class UserModel{
+export class UserModel {
 
 }
 
 const userModel = new mongoose.Schema({
     fullName: {
-        type:String,
+        type: String,
         required: true
     },
-    userName: {
+    email: {
         type: String,
         required: true,
         unique: true
@@ -25,10 +25,10 @@ const userModel = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ["male", "female"],
+        enum: ["Male", "Female", "male", "female"],
         required: true
     }
-    
+
 }, { timestamps: true });
 
 export const User = mongoose.model("User", userModel);

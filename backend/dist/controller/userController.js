@@ -5,14 +5,14 @@ import dotenv from "dotenv";
 dotenv.config({});
 export const registerUser = async (req, res) => {
     try {
-        const { fullName, userName, password, confirmPassword, gender } = req.body;
-        if (!fullName || !userName || !password || !gender || !confirmPassword) {
+        const { fullName, email, password, confirmPassword, gender } = req.body;
+        if (!fullName || !email || !password || !gender || !confirmPassword) {
             return res.status(400).json({ message: "All fields are required" });
         }
         if (password !== confirmPassword) {
             return res.status(400).json({ message: "Passwords do not match" });
         }
-        const existingUser = await User.findOne({ userName });
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "User already exists" });
         }
@@ -21,21 +21,21 @@ export const registerUser = async (req, res) => {
         const femaleProfile = `https://api.dicebear.com/9.x/adventurer/svg?seed=Avery`;
         const maleProfile = `https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander`;
         const profile = gender === "female" ? femaleProfile : maleProfile;
-        const user = await User.create({ fullName, userName, password: hashedPassword, gender, profile });
-        return res.status(201).json({ message: "User registered successfully", user });
+        const user = await User.create({ fullName, email, password: hashedPassword, gender, profile });
+        return res.status(201).json({ message: "User registered successfully", success: true, user });
     }
     catch (error) {
         console.log("Error in registerUser", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+        return res.status(500).json({ message: "Internal server error", error: error.message, success: false });
     }
 };
 export const loginUser = async (req, res) => {
     try {
-        const { userName, password } = req.body;
-        if (!userName || !password) {
-            return res.status(400).json({ message: "All fields are required" });
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ message: "All fields are required", success: false });
         }
-        const user = await User.findOne({ userName });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ message: "User not found", success: false });
         }
@@ -55,7 +55,7 @@ export const loginUser = async (req, res) => {
     }
     catch (error) {
         console.log("Error in loginUser", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+        return res.status(500).json({ message: "Internal server error", error: error.message, success: false });
     }
 };
 export const logoutUser = async (req, res) => {
@@ -65,7 +65,7 @@ export const logoutUser = async (req, res) => {
     }
     catch (error) {
         console.log("Error in logoutUser", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+        return res.status(500).json({ message: "Internal server error", error: error.message, success: false });
     }
 };
 export const getOtherUsers = async (req, res) => {
@@ -76,7 +76,7 @@ export const getOtherUsers = async (req, res) => {
     }
     catch (error) {
         console.log("Error in getOtherUser", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+        return res.status(500).json({ message: "Internal server error", error: error.message, success: false });
     }
 };
 //# sourceMappingURL=userController.js.map
