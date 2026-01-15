@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useAuthStore } from "../../store/useAuthStore";
 
 const LoginPage = () => {
   const [user, setUser] = useState({
@@ -17,11 +16,9 @@ const LoginPage = () => {
   });
 
   const navigate = useNavigate();
-  const { setAuthUser, setIsCheckingAuth } = useAuthStore();
 
   const onSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsCheckingAuth(true);
     try {
       const response = await axios.post(
         "http://localhost:8400/api/users/login",
@@ -34,7 +31,6 @@ const LoginPage = () => {
         }
       );
       toast.success(response.data.message);
-      setAuthUser(response.data.user); // Assuming the backend returns a user object
       navigate("/");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -44,8 +40,6 @@ const LoginPage = () => {
       }
 
       console.log("Error in Login:", error);
-    } finally {
-      setIsCheckingAuth(false);
     }
 
     setUser({
