@@ -8,29 +8,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useAuthStore } from "../../store/useAuthStore";
 
 const LoginPage = () => {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = useAuthStore((state) => state.login);
 
   const navigate = useNavigate();
 
   const onSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
+
+
     try {
-      const response = await axios.post(
-        "http://localhost:8400/api/users/login",
-        user,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      toast.success(response.data.message);
+      const message = await login(email, password);
+      toast.success(message);
       navigate("/");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -42,10 +36,8 @@ const LoginPage = () => {
       console.log("Error in Login:", error);
     }
 
-    setUser({
-      email: "",
-      password: "",
-    });
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -83,8 +75,8 @@ const LoginPage = () => {
                   id="email"
                   type="email"
                   placeholder="maxleiter@gmail.com"
-                  value={user.email}
-                  onChange={(e) => setUser({ ...user, email: e.target.value })}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Field>
               <Field>
@@ -93,9 +85,9 @@ const LoginPage = () => {
                   id="password"
                   type="password"
                   placeholder="••••••••"
-                  value={user.password}
+                  value={password}
                   onChange={(e) =>
-                    setUser({ ...user, password: e.target.value })
+                    setPassword(e.target.value)
                   }
                 />
               </Field>
