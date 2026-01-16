@@ -6,6 +6,7 @@ type User = {
   email: string;
   gender: "Male" | "Female" | "male" | "female";
   fullName: string;
+  profile: string;
 };
 
 
@@ -33,6 +34,7 @@ export const useAuthStore = create<AuthState>()(
           user: { email, 
             gender: res.data.user.gender,
             fullName: res.data.user.fullName,
+            profile: res.data.user.profile,
           },
           
           isAuthenticated: true,

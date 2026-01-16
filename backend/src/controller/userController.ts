@@ -3,6 +3,7 @@ import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { getAvatarByGender } from "./generateImage.js";
 
 dotenv.config({});
 
@@ -24,11 +25,9 @@ export const registerUser: RequestHandler = async (req, res) => {
         // 10 --> salt value
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const femaleProfile = "https://api.dicebear.com/9.x/adventurer/svg?seed=Avery"
-        const maleProfile = "https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander"
-        const profile = gender === "female" ? femaleProfile : maleProfile;
+        const profile = getAvatarByGender(gender);
 
-        const user = await User.create({ fullName, email, password: hashedPassword, gender, profile });
+        const user = await User.create({ fullName, email, password: hashedPassword, gender, profile:profile });
         return res.status(201).json({ message: "User registered successfully",success:true  , user });
     } catch (error: any) {
         console.log("Error in registerUser", error);
