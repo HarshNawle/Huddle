@@ -18,7 +18,6 @@ const userModel = new mongoose.Schema({
     },
     profile: {
         type: String,
-        default: "default.png"
     },
     gender: {
         type: String,

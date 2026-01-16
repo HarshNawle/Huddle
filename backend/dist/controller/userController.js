@@ -18,8 +18,8 @@ export const registerUser = async (req, res) => {
         }
         // 10 --> salt value
         const hashedPassword = await bcrypt.hash(password, 10);
-        const femaleProfile = `https://api.dicebear.com/9.x/adventurer/svg?seed=Avery`;
-        const maleProfile = `https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander`;
+        const femaleProfile = "https://api.dicebear.com/9.x/adventurer/svg?seed=Avery";
+        const maleProfile = "https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander";
         const profile = gender === "female" ? femaleProfile : maleProfile;
         const user = await User.create({ fullName, email, password: hashedPassword, gender, profile });
         return res.status(201).json({ message: "User registered successfully", success: true, user });

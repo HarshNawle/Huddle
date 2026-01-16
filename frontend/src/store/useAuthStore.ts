@@ -4,7 +4,10 @@ import { persist } from "zustand/middleware";
 
 type User = {
   email: string;
+  gender: "Male" | "Female" | "male" | "female";
+  fullName: string;
 };
+
 
 type AuthState = {
   user: User | null;
@@ -27,7 +30,11 @@ export const useAuthStore = create<AuthState>()(
         );
 
         set({
-          user: { email },
+          user: { email, 
+            gender: res.data.user.gender,
+            fullName: res.data.user.fullName,
+          },
+          
           isAuthenticated: true,
         });
 

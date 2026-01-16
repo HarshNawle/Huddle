@@ -36,7 +36,7 @@ const App = () => {
           <Route 
           path="/signup" 
           element={
-            isAuthenticated ? <Navigate to="/" replace={true} /> : <SignupPage />
+            isAuthenticated ? <Navigate to="/"  /> : <SignupPage />
           }
           />
           <Route 
