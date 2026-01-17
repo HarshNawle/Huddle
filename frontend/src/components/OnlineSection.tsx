@@ -1,19 +1,24 @@
 import { useAuthStore } from "@/store/useAuthStore"
-import { Avatar, AvatarImage } from "./ui/avatar"
+import OtherUser from "./pages/OtherUser";
 
 
 const OnlineSection = () => {
-    const user = useAuthStore((state) => state.user);
+  const user = useAuthStore((state) => state.user);
 
-    if (!user) return null;
+  if (!user) return null;
 
   return (
-    <div>
-        <div>
-            <Avatar>
-                <AvatarImage src={user?.profile} />
-            </Avatar>
-        </div>
+    <div className="p-4 w-full">
+      {/* Other User Container */}
+      <div className="flex flex-col gap-2">
+        <OtherUser />
+        <OtherUser />
+        <OtherUser />
+        <OtherUser />
+      </div>
+
+
+
     </div>
   )
 }

@@ -10,18 +10,18 @@ const SideBar = () => {
   if (!user) return null;
 
   return (
-    <div className="p-5 w-full max-w-[450px] bg-blue-400">
+    <div className="p-5 w-full max-w-[450px] ">
       {/* SideBar Header with user profile and name */}
       <div>
         {/* User Profile Picture */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
 
           {/* User Profile Picture and Name */}
           <div className="flex items-center gap-3">
-            <Avatar className="size-15 rounded-full">
-              <AvatarImage src={user?.profile} alt="avatar" />
+            <Avatar className="size-16 rounded-full">
+              <AvatarImage src={user?.profile} alt="avatar" className="object-cover w-full h-full" />
             </Avatar>
-            <p className="text-black font-bold text-xl">{user.fullName}</p>
+            <p className=" font-bold text-xl">{user.fullName}</p>
           </div>
 
           {/* Search Bar */}
