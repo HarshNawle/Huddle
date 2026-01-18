@@ -10,7 +10,7 @@ const SideBar = () => {
   if (!user) return null;
 
   return (
-    <div className="p-5 w-full max-w-[450px] ">
+    <div className="p-5 w-full max-w-[450px]">
       {/* SideBar Header with user profile and name */}
       <div>
         {/* User Profile Picture */}

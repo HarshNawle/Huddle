@@ -7,8 +7,8 @@ type Gender = "Male" | "Female";
 
 const maleAvatar = [
   "v1768585620/boys1_fmovgk.jpg",
-  "v1768585618/boys3_ccsndc.jpg",
   "v1768585620/boys2_cqhaco.jpg",
+  "v1768715238/boy7_v1wdj3.jpg", 
   "v1768585619/boys4_aqprwy.jpg",
   "v1768585619/boys5_qrwmn2.jpg",
   "v1768585620/boys6_lf6uzr.jpg",

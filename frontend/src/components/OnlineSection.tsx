@@ -1,26 +1,21 @@
-import { useAuthStore } from "@/store/useAuthStore"
 import OtherUser from "./pages/OtherUser";
-
+import useGetOtherUsers from "@/hooks/useGetOtherUsers";
+import { useOtherUserStore } from "@/store/useOtherUserStore";
 
 const OnlineSection = () => {
-  const user = useAuthStore((state) => state.user);
+  useGetOtherUsers(); // fetch & store users
 
-  if (!user) return null;
+  const users = useOtherUserStore((state) => state.users) ?? [];
 
   return (
-    <div className="p-4 w-full">
-      {/* Other User Container */}
+    <div className="p-4 w-full flex-1 min-h-0 overflow-y-auto custom-scrollbar">
       <div className="flex flex-col gap-2">
-        <OtherUser />
-        <OtherUser />
-        <OtherUser />
-        <OtherUser />
+        {users.map((u) => (
+          <OtherUser key={u._id} user={u} />
+        ))}
       </div>
-
-
-
     </div>
-  )
-}
+  );
+};
 
-export default OnlineSection
+export default OnlineSection;

@@ -1,19 +1,21 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
-
 import { Input } from "./ui/input";
 import { Send } from "lucide-react";
+import { ChatBubbleVariants } from "./Message";
+import { Separator } from "./ui/separator";
+
 
 
 const MessageSection = () => {
   const user = useAuthStore((state) => state.user);
   return (
-    <div className="w-full h-full flex flex-col justify-between bg-white dark:bg-gray-950">
+    <div className="w-full h-full min-h-0 flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 p-2">
         {/* Avatar */}
         <div className="relative">
-          <Avatar className="size-16">
+          <Avatar className="size-14">
             <AvatarImage src={user?.profile} className="object-cover" />
           </Avatar>
           <span className="absolute bottom-0 right-0 size-4 bg-green-500 rounded-full border-2 border-white dark:border-green-200" />
@@ -24,14 +26,15 @@ const MessageSection = () => {
           <p className="text-sm text-gray-500 dark:text-gray-400">Active Now</p>
         </div>
       </div>
+      <Separator/>
       {/* Message Container */}
-      <div className="flex-1 w-full overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Messages will go here */}
-
+        <ChatBubbleVariants />
       </div>
 
       {/* Input Container */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+      <div className="p-4 border-t border-gray-200 dark:border-gray-800">
         <div className="flex items-center gap-2">
           <div className="flex-1">
             <Input
@@ -44,6 +47,7 @@ const MessageSection = () => {
           </button>
         </div>
       </div>
+
     </div>
   )
 }

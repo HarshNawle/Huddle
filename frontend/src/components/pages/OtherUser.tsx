@@ -1,9 +1,19 @@
-import { useAuthStore } from '@/store/useAuthStore'
-import { Avatar, AvatarImage } from '../ui/avatar'
+import { Avatar, AvatarImage } from "../ui/avatar";
 
-const OtherUser = () => {
-    const user = useAuthStore((state) => state.user)
+type OtherUserType = {
+    _id: string;
+    fullName: string;
+    email: string;
+    gender: "male" | "female";
+    profile: string;
+};
 
+
+type Props = {
+    user: OtherUserType;
+};
+
+const OtherUser = ({ user }: Props) => {
     return (
         <div
             className="
@@ -15,18 +25,21 @@ const OtherUser = () => {
         transition-all duration-200
       "
         >
-            <div className="flex  gap-3">
-                <div className="mb-3 relative">
+            <div className="flex gap-3">
+                <div className="relative">
                     <Avatar className="size-12 overflow-hidden">
-                        <AvatarImage src={user?.profile} className="object-cover" />
+                        <AvatarImage
+                            src={user.profile}
+                            className="object-cover w-full h-full"
+                        />
                     </Avatar>
+
                     <span className="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-900" />
                 </div>
 
-
                 <div className="flex flex-col">
                     <p className="font-semibold text-gray-700 dark:text-gray-300">
-                        Alia Bhatt
+                        {user.fullName}
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                         Hello
@@ -38,7 +51,7 @@ const OtherUser = () => {
                 Sun
             </p>
         </div>
-    )
-}
+    );
+};
 
-export default OtherUser
+export default OtherUser;
