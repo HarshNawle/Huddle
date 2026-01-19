@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -14,7 +15,7 @@ type AuthState = {
   user: User | null;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<string>;
-  logout: () => void;
+  logout: () => Promise<void>;
 };
 
 export const useAuthStore = create<AuthState>()(
@@ -31,23 +32,37 @@ export const useAuthStore = create<AuthState>()(
         );
 
         set({
-          user: { email, 
+          user: {
+            email: res.data.user.email,
             gender: res.data.user.gender,
             fullName: res.data.user.fullName,
             profile: res.data.user.profile,
           },
-          
+
           isAuthenticated: true,
         });
 
         return res.data.message;
       },
 
-      logout: () =>
-        set({
-          user: null,
-          isAuthenticated: false,
-        }),
+      logout: async () => {
+        try {
+          await axios.delete("http://localhost:8400/api/users/logout");
+          
+          
+          toast.success("Logged out successfully 👋");
+        } catch (error) {
+          console.log("Error in logout:", error);
+          toast.error("Logout failed. Try again!");
+        } finally {
+          //clear frontend state nop matter what
+          localStorage.removeItem("huddle-auth");
+          set({
+            user: null,
+            isAuthenticated: false,
+          })
+        }
+      },
     }),
     {
       name: "huddle-auth", // localStorage key

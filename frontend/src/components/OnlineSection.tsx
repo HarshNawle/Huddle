@@ -14,6 +14,7 @@ const OnlineSection = () => {
           <OtherUser key={u._id} user={u} />
         ))}
       </div>
+      
     </div>
   );
 };

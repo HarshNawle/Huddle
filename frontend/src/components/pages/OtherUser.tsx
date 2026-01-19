@@ -17,14 +17,12 @@ const OtherUser = ({ user }: Props) => {
     return (
         <div
             className="
-        flex items-center justify-between gap-3 p-2
-        border border-transparent
-        hover:border-gray-200 dark:hover:border-gray-700
-        hover:bg-gray-50 dark:hover:bg-gray-800
-        rounded-xl cursor-pointer
-        transition-all duration-200
-      "
-        >
+            flex items-center justify-between gap-3 p-2
+            border border-transparent
+            hover:border-gray-200 dark:hover:border-gray-700
+            hover:bg-gray-50 dark:hover:bg-gray-800
+            rounded-xl cursor-pointer
+            transition-all duration-200">
             <div className="flex gap-3">
                 <div className="relative">
                     <Avatar className="size-12 overflow-hidden">
