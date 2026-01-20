@@ -4,11 +4,15 @@ import { Input } from "./ui/input";
 import { Send } from "lucide-react";
 import { ChatBubbleVariants } from "./Message";
 import { Separator } from "./ui/separator";
+import useGetMessages from "@/hooks/useGetMEssages";
 
 
 
 const MessageSection = () => {
   const user = useAuthStore((state) => state.user);
+
+  // Fetch messages when a user is selected
+  useGetMessages();
   return (
     <div className="w-full h-full min-h-0 flex flex-col">
       {/* Header */}
@@ -26,7 +30,7 @@ const MessageSection = () => {
           <p className="text-sm text-gray-500 dark:text-gray-400">Active Now</p>
         </div>
       </div>
-      <Separator/>
+      <Separator />
       {/* Message Container */}
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Messages will go here */}
