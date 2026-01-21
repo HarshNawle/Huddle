@@ -19,10 +19,10 @@ const useGetMessages = () => {
             try {
                 const res = await axios.get(`http://localhost:8400/api/messages/${selectedUser._id}`,
                     { withCredentials: true });
-                console.log("Selected User:", selectedUser.fullName);
-                console.log("Messages:", res.data.messages); // ✅ HERE
+                // console.log("Selected User:", selectedUser.fullName);
+                // console.log("Messages:", res.data); // Backend returns array directly
 
-                setMessages(res.data);
+                setMessages(res.data.messages);
             } catch (error) {
                 console.log(error);
             }

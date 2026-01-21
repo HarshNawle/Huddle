@@ -26,7 +26,7 @@ const OtherUser = ({ user }: Props) => {
         <>
             <div
                 onClick={handleSelectUser}
-                className={`${selectedUser?._id === user._id ? "bg-gray-50 dark:bg-gray-800" : ""} flex items-center justify-between gap-3 p-2 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl cursor-pointer transition-all duration-200`}>
+                className={`${selectedUser?._id === user._id ? "bg-gray-300 dark:bg-gray-800" : ""} flex items-center justify-between gap-3 p-2 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl cursor-pointer transition-all duration-200`}>
                 <div className="flex gap-3">
                     <div className="relative">
                         <Avatar className="size-12 overflow-hidden">

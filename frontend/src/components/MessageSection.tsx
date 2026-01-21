@@ -4,7 +4,8 @@ import { Input } from "./ui/input";
 import { Send } from "lucide-react";
 import { ChatBubbleVariants } from "./Message";
 import { Separator } from "./ui/separator";
-import useGetMessages from "@/hooks/useGetMEssages";
+import useGetMessages from "@/hooks/useGetMessages";
+import { useMessageStore } from "@/store/useMessageStore";
 
 
 
@@ -13,6 +14,13 @@ const MessageSection = () => {
 
   // Fetch messages when a user is selected
   useGetMessages();
+
+  const messages = useMessageStore((state) => state.messages);
+
+  if(!messages) return;
+
+
+  
   return (
     <div className="w-full h-full min-h-0 flex flex-col">
       {/* Header */}
@@ -34,7 +42,9 @@ const MessageSection = () => {
       {/* Message Container */}
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Messages will go here */}
-        <ChatBubbleVariants />
+        {messages.map((message) => (
+          <ChatBubbleVariants key={message._id} message={message} />
+        ))}
       </div>
 
       {/* Input Container */}

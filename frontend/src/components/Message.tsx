@@ -5,31 +5,31 @@ import {
 } from "@/components/ui/chat-bubble"
 import { Copy, RefreshCcw } from "lucide-react"
 
-const messages = [
-    {
-        id: 1,
-        message: "Help me with my essay.",
-        sender: "user",
-    },
-    {
-        id: 2,
-        message: "I can help you with that. What do you need help with?",
-        sender: "bot",
-    },
-]
+type Message = {
+    _id: string;
+    sender: string;
+    receiver: string;
+    message: string;
+    createdAt: string;
+}
+
+type Props = {
+    message: Message;
+}
+
 
 const actionIcons = [
     { icon: Copy, type: "Copy" },
     { icon: RefreshCcw, type: "Regenerate" },
 ]
 
-export const ChatBubbleVariants = () => {
+export const ChatBubbleVariants = ({ message }: Props) => {
     return (
         <div className="w-full space-y-4 p-4">
             <ChatBubble variant="sent">
                 <ChatBubbleAvatar fallback="US" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&q=80&crop=faces&fit=crop" />
                 <ChatBubbleMessage variant="sent">
-                    I have a question about the library.
+                    {message.message}
                 </ChatBubbleMessage>
             </ChatBubble>
 
